@@ -39,6 +39,7 @@ jobs:
             owasp-cve-db-
 
       - name: Build and run security JSON generator
+        working-directory: security
         run: |
           mvn -B -ntp install
           mvn -B -ntp exec:java \
