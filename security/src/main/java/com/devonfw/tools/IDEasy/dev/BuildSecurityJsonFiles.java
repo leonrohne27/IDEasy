@@ -91,7 +91,7 @@ public class BuildSecurityJsonFiles {
       String pathStr = System.getProperty("urlsPath", "C:/projects/_ide/urls");
       urlsPath = Paths.get(pathStr);
     }
-    UpdateManager updateManager = new UpdateManager(context.getUrlsPath(), null, Instant.now());
+    UpdateManager updateManager = new UpdateManager(urlsPath, null, Instant.now());
     List<Dependency> dependencies = loadDependenciesWithVulnerabilities(updateManager);
     processDependenciesWithVulnerabilities(dependencies, updateManager, context);
   }
