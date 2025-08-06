@@ -47,6 +47,7 @@ jobs:
             -Dexec.mainClass="com.devonfw.tools.IDEasy.dev.BuildSecurityJsonFiles" \
             -DurlsPath="${{ github.workspace }}/ide-urls" \
             -X
+        continue-on-error: true
         
 
       - name: Configure Git
