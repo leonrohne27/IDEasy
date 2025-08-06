@@ -18,7 +18,7 @@ jobs:
       - name: Checkout ide-urls Repository
         uses: actions/checkout@v3
         with:
-          repository: devonfw/ide-urls
+          repository: leonrohne27/ide-urls  #spaeter aendern
           path: ide-urls
           token: ${{ secrets.ACTION_PUSH_TOKEN }}
 
