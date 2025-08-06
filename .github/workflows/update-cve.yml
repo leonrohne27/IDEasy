@@ -43,6 +43,7 @@ jobs:
           mvn -B -ntp install
           mvn -B -ntp exec:java \
             -Dexec.mainClass="com.devonfw.tools.IDEasy.dev.BuildSecurityJsonFiles" \
+            -X
         continue-on-error: true # Falls CVE-Download fehlschlaegt, nicht abbrechen
 
       - name: Configure Git
