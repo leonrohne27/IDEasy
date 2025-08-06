@@ -50,6 +50,7 @@ import com.devonfw.tools.ide.log.IdeLogLevel;
 import com.devonfw.tools.ide.url.model.file.UrlSecurityFile;
 import com.devonfw.tools.ide.url.model.file.json.CVE;
 import com.devonfw.tools.ide.url.model.folder.UrlVersion;
+import com.devonfw.tools.ide.url.model.report.UrlFinalReport;
 import com.devonfw.tools.ide.url.updater.AbstractUrlUpdater;
 import com.devonfw.tools.ide.url.updater.UpdateManager;
 import com.devonfw.tools.ide.version.BoundaryType;
@@ -91,7 +92,7 @@ public class BuildSecurityJsonFiles {
       String pathStr = System.getProperty("urlsPath", "C:/projects/_ide/urls");
       urlsPath = Paths.get(pathStr);
     }
-    UpdateManager updateManager = new UpdateManager(urlsPath, null, Instant.now());
+    UpdateManager updateManager = new UpdateManager(urlsPath, new UrlFinalReport(), Instant.now());
     List<Dependency> dependencies = loadDependenciesWithVulnerabilities(updateManager);
     processDependenciesWithVulnerabilities(dependencies, updateManager, context);
   }
