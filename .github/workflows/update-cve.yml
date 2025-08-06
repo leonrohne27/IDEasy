@@ -38,13 +38,18 @@ jobs:
           restore-keys: |
             owasp-cve-db-
 
+      
       - name: Build and run security JSON generator
+        working-directory: security
         run: |
           mvn -B -ntp install
           mvn -B -ntp exec:java \
             -Dexec.mainClass="com.devonfw.tools.IDEasy.dev.BuildSecurityJsonFiles" \
+            -DurlsPath="${{ github.workspace }}/ide-urls" \
+            -DtargetRepository="${{ github.workspace }}/ide-urls" \
             -X
-        continue-on-error: true # Falls CVE-Download fehlschlaegt, nicht abbrechen
+        continue-on-error: true
+        
 
       - name: Configure Git
         run: |
