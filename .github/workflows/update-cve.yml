@@ -44,6 +44,7 @@ jobs:
           mvn -B -ntp install
           mvn -B -ntp exec:java \
             -Dexec.mainClass="com.devonfw.tools.IDEasy.dev.BuildSecurityJsonFiles" \
+            -DurlsPath="C:/projects/_ide/urls"
             -X
         continue-on-error: true # Falls CVE-Download fehlschlaegt, nicht abbrechen
 
