@@ -33,14 +33,12 @@ jobs:
         id: cache-cve
         uses: actions/cache@v3
         with:
-          path: ~/.dependency-check
-          key: owasp-cve-db
-          restore-keys: |
-            owasp-cve-db-
+          path:
+          key:
+          restore-keys:
 
       
       - name: Build and run security JSON generator
-        working-directory: security
         run: |
           mvn -B -ntp install
           mvn -B -ntp exec:java \
