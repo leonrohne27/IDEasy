@@ -86,24 +86,9 @@ public class BuildSecurityJsonFiles {
   private static final Set<String> actuallyIgnoredCves = new HashSet<>();
 
   public static void main(String[] args) {
-
-    String targetRepoStr = System.getProperty("targetRepository", "C:/projects/_ide/urls");
-    Path targetRepository = Paths.get(targetRepoStr);
-    System.setProperty("targetRepository", targetRepository.toString());
-
-    System.out.println("targetRepository: " + targetRepository.toAbsolutePath());
-
     IdeContext context = new IdeContextConsole(IdeLogLevel.INFO, null, false);
     Path urlsPath = context.getUrlsPath();
-    if (urlsPath == null) {
-      String pathStr = System.getProperty("urlsPath", "C:/projects/_ide/urls");
-      urlsPath = Paths.get(pathStr);
-    }
-    
-    System.out.println("urlsPath: " + urlsPath.toAbsolutePath());
-
     UrlFinalReport report = new UrlFinalReport();
-
     UpdateManager updateManager = new UpdateManager(urlsPath, report, Instant.now());
     List<Dependency> dependencies = loadDependenciesWithVulnerabilities(updateManager);
     processDependenciesWithVulnerabilities(dependencies, updateManager, context);
