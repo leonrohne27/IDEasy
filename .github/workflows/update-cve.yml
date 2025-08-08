@@ -47,7 +47,7 @@ jobs:
           mvn -B -ntp install
           mvn -B -ntp exec:java \
             -Dexec.mainClass="com.devonfw.tools.IDEasy.dev.BuildSecurityJsonFiles" \
-            -Dexec.args="ide-urls" \
+            -Dexec.args="${{ github.workspace }}/ide-urls" \
             -X
         continue-on-error: true
         
