@@ -33,10 +33,12 @@ jobs:
         id: cache-cve
         uses: actions/cache@v3
         with:
-          path: ~/.dependency-check
-          key: owasp-cve-db
+          path: ~/.m2/repository/org/owasp/dependency-check-utils/
+          key: owasp-cve-db-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
+            owasp-cve-db-${{ runner.os }}-
             owasp-cve-db-
+
 
       
       - name: Build and run security JSON generator
