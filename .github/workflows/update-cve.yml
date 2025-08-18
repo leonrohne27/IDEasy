@@ -39,11 +39,6 @@ jobs:
             owasp-cve-db-${{ runner.os }}-
             owasp-cve-db-
 
-      - name: Build ide-cli module
-        run: |
-          cd ${{ github.workspace }}/ide/cli
-          mvn -B
-
       - name: Build and run security JSON generator
         working-directory: security
         run: |
