@@ -40,8 +40,8 @@ jobs:
             owasp-cve-db-
 
       - name: Build ide-cli module
-              working-directory: ide/cli
-              run: mvn -B -ntp install
+        working-directory: ide/cli
+        run: mvn -B -ntp install
 
       - name: Build and run security JSON generator
         working-directory: security
