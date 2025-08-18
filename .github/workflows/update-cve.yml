@@ -36,10 +36,6 @@ jobs:
           path:
           key: 
           restore-keys:
- 
-      - name: Build url-updater module
-              working-directory: url-updater
-              run: mvn -B -ntp install
 
       - name: Build and run security JSON generator
         working-directory: security
