@@ -92,13 +92,14 @@ public class BuildSecurityJsonFiles {
   private static final Logger LOG = LoggerFactory.getLogger(BuildSecurityJsonFiles.class);
 
   public static void main(String[] args) {
+    IdeContext context = new IdeContextConsole(IdeLogLevel.INFO, null, false);
     Path urlsPath = Path.of(args[0]);
     UrlRepository urlRepository = UrlRepository.load(urlsPath);
     System.out.println("Übergebener Pfad: " + urlsPath);
     UrlFinalReport report = new UrlFinalReport();
     UpdateManager updateManager = new UpdateManager(urlsPath, report, Instant.now());
     List<Dependency> dependencies = loadDependenciesWithVulnerabilities(updateManager);
-    processDependenciesWithVulnerabilities(dependencies, updateManager, new UrlMetadata(new IdeContextConsole(IdeLogLevel.INFO, null, false), urlRepository),
+    processDependenciesWithVulnerabilities(dependencies, updateManager, new UrlMetadata(context, urlRepository),
         urlsPath);
   }
 
