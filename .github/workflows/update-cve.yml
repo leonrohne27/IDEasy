@@ -38,6 +38,10 @@ jobs:
           restore-keys: |
             owasp-cve-db-${{ runner.os }}-
             owasp-cve-db-
+
+      - name: Build url-updater module
+        working-directory: url-updater
+        run: mvn -B -ntp install
       
       - name: Build and run security JSON generator
         working-directory: security
