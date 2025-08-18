@@ -33,18 +33,19 @@ jobs:
         id: cache-cve
         uses: actions/cache@v3
         with:
-          path:
-          key: 
-          restore-keys:
-
+          path: ~/.m2/repository/org/owasp/dependency-check-utils/
+          key: owasp-cve-db-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            owasp-cve-db-${{ runner.os }}-
+            owasp-cve-db-
+      
       - name: Build and run security JSON generator
         working-directory: security
         run: |
           mvn -B -ntp install
           mvn -B -ntp exec:java \
             -Dexec.mainClass="com.devonfw.tools.IDEasy.dev.BuildSecurityJsonFiles" \
-            -DurlsPath="${{ github.workspace }}/ide-urls" \
-            -DtargetRepository="${{ github.workspace }}/ide-urls" \
+            -Dexec.args="${{ github.workspace }}/ide-urls" \
             -X
         continue-on-error: true
         
@@ -54,7 +55,6 @@ jobs:
           cd ide-urls
           git config --global user.name "${{ secrets.BUILD_USER }}"
           git config --global user.email "${{ secrets.BUILD_USER_EMAIL }}"
-
       - name: Commit and Push changes to ide-urls
         run: |
           cd ide-urls
