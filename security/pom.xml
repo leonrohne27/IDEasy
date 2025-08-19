@@ -27,11 +27,6 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.devonfw.tools.IDEasy</groupId>
-      <artifactId>url-updater</artifactId>
-      <version>2025.07.002-SNAPSHOT</version>
-    </dependency>
-    <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>ide-cli</artifactId>
       <version>${project.version}</version>
